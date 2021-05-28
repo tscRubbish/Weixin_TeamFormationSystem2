@@ -14,8 +14,8 @@
     "pages/mine/mine-pages/helping/helping",
     "pages/mine/mine-pages/setting/setting",
     "pages/register/register",
-    "pages/changeTeamInfo/hangeTeamInfo"
-
+    "pages/changeTeamInfo/hangeTeamInfo",
+    "pages/another/another"
   ],
   "window": {
     "backgroundTextStyle": "light",

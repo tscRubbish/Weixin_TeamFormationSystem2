@@ -61,7 +61,7 @@ Page({
 
   toRegister(event){
    wx.navigateTo({
-     url: '',
+     url: '../register/register',
    })
   },
   /**

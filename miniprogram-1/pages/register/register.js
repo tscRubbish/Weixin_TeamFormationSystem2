@@ -1,4 +1,8 @@
 // pages/register/register.js
+var app = getApp()
+import config from "../../config/config"
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
+
 Page({
 
   /**
@@ -19,6 +23,70 @@ Page({
       [type]: event.detail.value
     })
   },
+
+  register() {
+    wx.request({
+      url: config.host + '/api/user/register',
+      method: "POST",
+      header: {
+        "nju-token": app.globalData.token,
+        "nju-long-token": app.globalData.longToken
+      },
+      data: {
+        "description": "",
+        "email": this.data.email,
+        "id": 0,
+        "likes": 0,
+        "password": this.data.password,
+        "pic": "string",
+        "score": 0,
+        "tags": [
+          "string"
+        ],
+        "userType": "Admin",
+        "username": this.data.username
+      },
+      success: (res) => {
+        if (res.data.message == "邮箱重复") {
+          Dialog.alert({title: '提示',
+            message: '邮箱重复'});
+        } else {
+          wx.request({
+            url: config.host + "/api/user/login",
+            method: "POST",
+            header: {
+              "nju-token": app.globalData.token,
+              "nju-long-token": app.globalData.longToken
+            },
+            data: {
+              "description": "",
+              "email": this.data.email,
+              "id": 0,
+              "likes": 0,
+              "password": this.data.password,
+              "pic": "string",
+              "score": 0,
+              "tags": [
+                "string"
+              ],
+              "userType": "Admin",
+              "username": this.data.username
+            },
+            success: (res) => {
+              app.globalData.id = res.data.content.userVo.id;
+              app.globalData.token = res.data.content.njuToken;
+              app.globalData.longToken = res.data.content.njuLongToken;
+               wx.navigateTo({
+                url: '../mine/mine',
+              })
+            }
+          })
+         
+        }
+      }
+    })
+  },
+
   onClose(event){
     this.setData({show : false});
   },

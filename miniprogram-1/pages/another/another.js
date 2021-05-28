@@ -133,7 +133,7 @@ Page({
         medal: 0
       })
     } else {
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/login/login',
       })
     }
