@@ -17,6 +17,7 @@ App({
   globalData: {
     userInfo: null,
     token: "",
-    longToken: ""
+    longToken: "",
+    id: 0
   }
 })

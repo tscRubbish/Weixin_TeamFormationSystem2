@@ -140,15 +140,10 @@ Page({
   },
 
   onShow() {
-    try {
-      this.setData({
-        id: wx.getStorageSync('id')
-      })
-    } catch(e) {
-      console.log(e);
-    }
+    this.setData({
+      id: app.globalData.id
+    })
     if (this.data.id != 0) {
-      console.log("wsy")
       wx.request({
         url: config.host + "/api/user/getInfo?id=" + this.data.id,
         header: {
@@ -176,8 +171,6 @@ Page({
     } else {
       this.setData({login: "退出登录"})
     }
-    wx.clearStorage()
-    wx.setStorageSync('id', this.data.id)
   },
 
   onLoad() {

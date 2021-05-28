@@ -42,8 +42,8 @@ Page({
             Dialog.alert({title: '提示',
             message: '用户名或邮箱错误'});
             
-          } else {
-              wx.setStorageSync('id',res.data.content.userVo.id),
+          } else if (res.data.content.userVo.id != null) {
+            app.globalData.id = res.data.content.userVo.id;
             app.globalData.token = res.data.content.njuToken;
             app.globalData.longToken = res.data.content.njuLongToken;
             wx.navigateTo({ 
