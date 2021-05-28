@@ -1,3 +1,6 @@
+import config from "../../../../config/config"
+var app = getApp()
+
 Page({
 
   /**
@@ -5,13 +8,12 @@ Page({
    */
   data: {
     showImage: false,
-    showName: false,
     showIntro: false,
     id: 0,
     name: null,
     words: null,
-    date: "",
-    showDate: false
+    pic: "",
+    email: ""
   },
 
   //编辑头像
@@ -23,19 +25,48 @@ Page({
     this.setData({ showImage: false });
   },
 
-  //编辑用户名
-  showName() {
-    this.setData({ showName: true });
-  },
-
-  onNameClose() {
-    this.setData({ showName: false });
-  },
-
-  
   //改变介绍
-  onIntroChange() {
-    
+  onIntroChange(e) {
+    this.setData({words:e.detail})
+    console.log(this.data.words)
+  },
+
+  //保存
+  save() {
+    wx.request({
+      url: config.host + "/api/user/getInfo?id=" + this.data.id,
+      header: {
+        "nju-token": app.globalData.token,
+        "nju-long-token": app.globalData.longToken
+      },
+      success: (res) => {
+        wx.request({
+          url: config.host + "/api/user/changeInfo",
+          method: "POST",
+          header: {
+            "nju-token": app.globalData.token,
+            "nju-long-token": app.globalData.longToken
+          },
+          data: {
+            "description": this.data.words,
+            "email": res.data.content.email,
+            "id": this.data.id,
+            "likes":res.data.content.likes,
+            "score":res.data.content.score,
+            "password": res.data.content.password,
+            "pic": this.data.pic,
+            "tags": [
+              "string"
+            ],
+            "userType": "Admin",
+            "username": res.data.content.username
+          },
+          success: (res) => {
+            console.log(res);
+          }
+        })
+      }
+    })
   },
 
   //返回
@@ -53,7 +84,9 @@ Page({
     this.setData({
       id: options.id,
       name: options.name,
-      intro: options.intro
+      intro: options.intro,
+      email: options.email
     })
+
   },
 })
