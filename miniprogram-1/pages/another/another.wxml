@@ -51,4 +51,8 @@
     <text>{{medal}}</text>
   </van-grid-item>
 </van-grid>
+<text>个人描述</text>
+<rich-text>
+{{words}}
+</rich-text>
 
