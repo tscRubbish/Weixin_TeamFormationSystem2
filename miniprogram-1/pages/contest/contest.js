@@ -30,6 +30,11 @@ Page({
       url: '/pages/userList/userList',
     })
   },
+  toTeamIndex(event){
+    wx.redirectTo({
+      url: '/pages/team_index/team_index',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

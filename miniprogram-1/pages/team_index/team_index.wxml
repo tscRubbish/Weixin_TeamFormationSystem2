@@ -1,56 +1,37 @@
-<van-tabs active="{{ tab_active }}" bind:change="tab_onChange">
+<van-tabs active="{{ tab_active }}" bind:change="tab_onChange" swipeable>
   <van-tab title="我的队伍">
     <van-cell-group>
-      <van-cell
-      wx:for="{{match_array}}"
-      wx:key="id"
-      title="{{item.name}}" 
-      value="{{item.Num_now}}/4"
-      size="large" 
-      label="{{item.contest.name}}"
-      is-link
-      link-type="navigateTo"
-      url="/pages/Team_details/Team_details?TID={{item.id}}&Tname={{item.name}}&match_name={{item.contest.name}}&Timg_path={{item.pic}}&notice={{item.captainNotice}}&memberID_array={{item.memberIDList}}&memberName_array={{item.memberNameList}}"
-      center
-      />
+      <van-cell wx:for="{{match_array}}" wx:key="id" title="{{item.name}}" value="{{item.Num_now}}/4" size="large"
+        label="{{item.contest.name}}" is-link link-type="navigateTo"
+        url="/pages/Team_details/Team_details?TID={{item.id}}&Tname={{item.name}}&match_name={{item.contest.name}}&Timg_path={{item.pic}}&notice={{item.captainNotice}}&memberID_array={{item.memberIDList}}&memberName_array={{item.memberNameList}}"
+        center />
     </van-cell-group>
   </van-tab>
 
   <van-tab title="发起组队">
     <van-cell-group>
-    <van-field
-    model:value="{{ new_Tname }}"
-    placeholder="请输入队伍名称"
-    clearable
-    label="队伍名称"
-    input-align="right"
-    />
+      <van-field model:value="{{ new_Tname }}" placeholder="请输入队伍名称" clearable label="队伍名称" input-align="right" />
     </van-cell-group>
     <van-cell title="队伍人数">
       <view slot="">
-        <van-stepper
-        model:value="{{ new_MaxNum }}" 
-        label="队伍人数"
-        min="1" 
-        max="30"
-        />
+        <van-stepper model:value="{{ new_MaxNum }}" label="队伍人数" min="1" max="30" />
       </view>
     </van-cell>
     <van-cell title="选择比赛" value="{{choose_match}}" bind:click="showPopup" center>
     </van-cell>
     <van-popup show="{{ show }}" bind:close="onClose" position="bottom" round="true">
       <view slot="">
-        <van-picker columns="{{ matchs }}" bind:change="match_Change" /> 
+        <van-picker columns="{{ matchs }}" bind:change="match_Change" />
       </view>
     </van-popup>
     <van-cell-group>
-<!--   
+      <!--   
     <van-cell title="队伍头像" center>
       <view slot=""> 
       <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
       </view>
     </van-cell> -->
-    <!-- <van-field
+      <!-- <van-field
     model:value="{{ new_introduction }}"
     label="队伍简介"
     type="textarea"
@@ -59,36 +40,45 @@
     maxlength="115"
     show-word-limit="true"
     /> -->
-    <van-field
-      model:value="{{ new_Tpassword }}"
-      type="password"
-      label="队伍密码"
-      placeholder="请创建队伍密码"
-      input-align="right"
-      />
-  </van-cell-group>
-  <van-button type="default" size="large" icon="plus" bind:click="createTeam">发起组队</van-button>
-    
-    
-    
+      <van-field model:value="{{ new_Tpassword }}" type="password" label="队伍密码" placeholder="请创建队伍密码"
+        input-align="right" />
+    </van-cell-group>
+    <van-button type="default" size="large" icon="plus" bind:click="createTeam">发起组队</van-button>
+
+
+
   </van-tab>
-  
+
   <van-tab title="加入队伍">
     <van-cell-group>
-      <van-field
-      model:value="{{ join_TID }}"
-      clearable
-      label="队伍TID"
-      placeholder="请输入队伍TID"
-      />
-      <van-field
-      model:value="{{ join_Tpassword }}"
-      type="password"
-      label="队伍密码"
-      placeholder="请输入队伍密码"
-      />
+      <van-field model:value="{{ join_TID }}" clearable label="队伍TID" placeholder="请输入队伍TID" />
+      <van-field model:value="{{ join_Tpassword }}" type="password" label="队伍密码" placeholder="请输入队伍密码" />
     </van-cell-group>
     <van-button type="default" size="large" icon="plus" bind:click="join_team">加入队伍</van-button>
+  </van-tab>
+
+  <van-tab title="搜寻队员">
+    <van-search value="{{keyword}}" placeholder="请输入搜索关键词" id="keyword" bind:change="handleInput"
+      bindconfirm="search" />
+    <text class="title">搜索范围包括用户名、标签和描述</text>
+    <van-button round type="info" class="search" size="small" bindtap="search">搜索</van-button>
+    <van-divider borderColor="#1989fa" />
+    <view class="usersList">
+      <scroll-view scroll-y="true">
+        <view wx:if="{{hasResult==false}}" class="title">暂无搜索结果</view>
+        <view wx:else>
+          <l-list wx:for="{{userList}}" title="{{item.username}}" data-item="{{item}}" wx:key="id"
+            image="/static/images/箭头右.png" bindtap="toUser">
+            <view></view>
+          </l-list>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="pageButton">
+      <van-button bindtap="prePage" size="small" color="#00BBFF">上一页</van-button>
+      <text>当前页:{{page}}</text>
+      <van-button bindtap="nextPage" size="small" color="#00BBFF">下一页</van-button>
+    </view>
   </van-tab>
 </van-tabs>
 
