@@ -16,9 +16,10 @@
 </div>
 
 <div class="name">
-  <view class="id"> ID：{{id}} </view>
-  <view class="id"> 用户名：{{name}} </view>
+  <view class="id"> ID：{{userVo.id}} </view>
+  <view class="id"> 用户名：{{userVo.username}} </view>
 </div>
+
 
 <van-toast id="van-toast" />
 
@@ -26,14 +27,17 @@
   <van-grid-item use-slot>
     <van-icon name="{{likesType}}" bindtap="onLikesChange" data-type="{{likesType}}" />
     <text>点赞</text>
-    <text>{{likes}}</text>
+    <text>{{userVo.likes}}</text>
   </van-grid-item>
   <van-grid-item use-slot>
-    <van-icon name="medal-o" bindtap="onScoreChange" data-type="{{scoreType}}" />
+    <van-icon name="{{scoreType}}"/>
     <text>评价</text>
-    <text>{{score}}</text>
+    <text>{{userVo.score}}</text>
   </van-grid-item>
+  
 </van-grid>
+
+
 <view class="rate">
   <text class="title">为该用户评价吧</text>
   <van-rate 
@@ -51,7 +55,7 @@
   <van-field
     type="textarea"
     autosize="true"
-    value="{{words}}"
+    value="{{userVo.description}}"
     label="介绍"
     readonly
     input-align="right"

@@ -7,13 +7,22 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userVo: {
+      description: "",
+      email: "",
+      id: 0,
+      likes: 0,
+      password: "",
+      pic: "",
+      score: 0,
+      tags: [
+        ""
+      ],
+      userType: "",
+      username: "未登录"
+    },
     showImage: false,
     showIntro: false,
-    id: 0,
-    name: null,
-    words: null,
-    pic: "",
-    email: ""
   },
 
   //编辑头像
@@ -27,19 +36,14 @@ Page({
 
   //改变介绍
   onIntroChange(e) {
-    this.setData({words:e.detail})
+    this.setData({
+      ["userVo.description"]:e.detail
+    })
     console.log(this.data.words)
   },
 
   //保存
   save() {
-    wx.request({
-      url: config.host + "/api/user/getInfo?id=" + this.data.id,
-      header: {
-        "nju-token": app.globalData.token,
-        "nju-long-token": app.globalData.longToken
-      },
-      success: (res) => {
         wx.request({
           url: config.host + "/api/user/changeInfo",
           method: "POST",
@@ -47,26 +51,11 @@ Page({
             "nju-token": app.globalData.token,
             "nju-long-token": app.globalData.longToken
           },
-          data: {
-            "description": this.data.words,
-            "email": res.data.content.email,
-            "id": this.data.id,
-            "likes":res.data.content.likes,
-            "score":res.data.content.score,
-            "password": res.data.content.password,
-            "pic": this.data.pic,
-            "tags": [
-              "string"
-            ],
-            "userType": "Admin",
-            "username": res.data.content.username
-          },
+          data: this.data.userVo,
           success: (res) => {
             console.log(res);
           }
         })
-      }
-    })
   },
 
   //返回
@@ -82,11 +71,21 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id: options.id,
-      name: options.name,
-      intro: options.intro,
-      email: options.email
+      ["userVo.id"]: options.id
     })
-
+    var that = this
+    wx.request({
+      url: config.host + "/api/user/getInfo?id=" + this.data.userVo.id,
+      header: {
+        "nju-token": app.globalData.token,
+        "nju-long-token": app.globalData.longToken
+      },
+      success: (res) => {
+        console.log(res);
+        that.setData({
+          userVo: res.data.content
+        })
+      }
+    })
   },
 })

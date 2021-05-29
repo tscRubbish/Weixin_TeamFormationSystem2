@@ -16,8 +16,8 @@
 </div>
 
 <div class="name">
-  <view class="id"> ID：{{id}} </view>
-  <view class="id"> 用户名：{{name}} </view>
+  <view class="id"> ID：{{userVo.id}} </view>
+  <view class="id"> 用户名：{{userVo.username}} </view>
 </div>
 
 
@@ -25,21 +25,21 @@
 
 <van-grid column-num="2" border="{{ false }}">
   <van-grid-item use-slot>
-    <van-icon name="{{likesType}}" bindtap="onLikesChange" data-type="{{likesType}}" />
+    <van-icon name="{{likesType}}"/>
     <text>点赞</text>
-    <text>{{likes}}</text>
+    <text>{{userVo.likes}}</text>
   </van-grid-item>
   <van-grid-item use-slot>
-    <van-icon name="{{scoreType}}" bindtap="onScoreChange" data-type="{{scoreType}}" />
+    <van-icon name="{{scoreType}}"/>
     <text>评价</text>
-    <text>{{score}}</text>
+    <text>{{userVo.score}}</text>
   </van-grid-item>
   
 </van-grid>
 
 <van-cell-group>
   <van-cell title="编辑个人信息" is-link link-type="navigateTo"
-  url="../mine/mine-pages/changement/changement?id={{id}}&name={{name}}&intro={{words}}&email={{email}}" />
+  url="../mine/mine-pages/changement/changement?id={{userVo.id}}" />
   <van-cell title="设置" is-link link-type="navigateTo"
   url="../mine/mine-pages/setting/setting" />
   <van-cell title="反馈与帮助" is-link link-type="navigateTo"

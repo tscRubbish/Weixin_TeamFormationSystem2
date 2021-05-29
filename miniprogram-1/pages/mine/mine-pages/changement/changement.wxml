@@ -12,7 +12,7 @@
   <van-cell title="头像" is-link bind:click="showImage" />
   <van-field
     label="用户名"
-    value="{{ name }}"
+    value="{{ userVo.username }}"
     readonly
     input-align="right"
   />
@@ -20,14 +20,14 @@
   type="textarea"
   autosize="true"
     label="介绍"
-    value="{{ intro }}"
+    value="{{ userVo.description }}"
     bind:change="onIntroChange"
     input-align="right"
     title-width="75rpx"
   />
   <van-field
     label="邮箱"
-    value="{{ email }}"
+    value="{{ userVo.email }}"
     readonly
     input-align="right"
     title-width="75rpx"
