@@ -1,6 +1,6 @@
 /* pages/mine/mine.wxss */
 #image {
-  margin: 30rpx;
+  margin: 20rpx;
 }
 
 .settings{
@@ -33,5 +33,5 @@
 }
 
 .id {
-  margin: 30rpx;
+  margin: 20rpx;
 }

@@ -30,7 +30,7 @@
 }
 
 .id {
-  margin: 30rpx;
+  margin: 20rpx;
 }
 .rate{
   display: flex;
