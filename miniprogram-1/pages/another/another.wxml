@@ -20,18 +20,6 @@
   <view class="id"> 用户名：{{name}} </view>
 </div>
 
-<van-cell-group>
-  <van-field
-    value="{{words}}"
-    label="介绍"
-    readonly
-    input-align="right"
-    title-width="75rpx"
-    type="textarea"
-    autosize="true"
-  />
-</van-cell-group>
-
 <van-toast id="van-toast" />
 
 <van-grid column-num="2" border="{{ false }}">
@@ -45,10 +33,21 @@
     <text>评价</text>
     <text>{{score}}</text>
   </van-grid-item>
-  
 </van-grid>
-<text>个人描述</text>
-<rich-text>
-{{words}}
-</rich-text>
+
+<van-cell-group>
+  <van-field
+    type="textarea"
+    autosize="true"
+    value="{{words}}"
+    label="介绍"
+    readonly
+    input-align="right"
+    title-width="75rpx"
+    type="textarea"
+    autosize="true"
+  />
+</van-cell-group>
+  
+
 

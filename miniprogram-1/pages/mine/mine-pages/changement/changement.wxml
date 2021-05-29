@@ -17,6 +17,8 @@
     input-align="right"
   />
   <van-field
+  type="textarea"
+  autosize="true"
     label="介绍"
     value="{{ intro }}"
     bind:change="onIntroChange"
