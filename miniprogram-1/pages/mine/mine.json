@@ -11,6 +11,7 @@
   "van-share-sheet": "@vant/weapp/share-sheet/index",
   "van-tabbar": "@vant/weapp/tabbar/index",
   "van-tabbar-item": "@vant/weapp/tabbar-item/index",
-  "van-toast": "@vant/weapp/toast/index"
+  "van-toast": "@vant/weapp/toast/index",
+  "van-divider": "@vant/weapp/divider/index"
   }
 }

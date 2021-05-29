@@ -16,9 +16,11 @@ Page({
         ""
       ],
       userType: "",
-      username: "未登录"
+      username: "未登录",
     },
     tabber: "mine",
+    focus: 0,
+    focusType: "like-o",
     likesType: "good-job-o",
     scoreType: "medal-o",
     showShare: false,
@@ -30,6 +32,7 @@ Page({
       { name: '二维码', icon: 'qrcode' },
     ],
     login: "退出登录",
+    loginType: "primary"
   },
   
   //分享
@@ -65,7 +68,8 @@ Page({
           "userType": "",
           "username": "未登录"
         },
-        login: "点击登录"
+        login: "点击登录",
+        loginType: "primary"
       })
       app.globalData.id = 0
     } else {
@@ -99,9 +103,9 @@ Page({
       })
     }
     if (this.data.userVo.id <= 0) {
-      this.setData({login: "点击登录"})
+      this.setData({login: "点击登录", loginType:"primary"})
     } else {
-      this.setData({login: "退出登录"})
+      this.setData({login: "退出登录", loginType:"danger"})
     }
   },
 

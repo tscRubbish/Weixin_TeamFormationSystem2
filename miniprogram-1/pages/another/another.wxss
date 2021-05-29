@@ -3,14 +3,34 @@
   margin: 20rpx;
 }
 
-.name {
+.focus{
+  font-weight: 600;
+  color: red;
+}
+
+.likes{
+  font-weight: 600;
+  color: green;
+}
+
+.score{
+  font-weight: 600;
+  color: blue;
+}
+
+
+.name { 
   margin: 20rpx;
   display: inline-block;
   vertical-align: middle
 }
 
+.first{
+  font-weight: 900;
+}
+
 .id {
-  margin: 20rpx;
+  margin: 30rpx;
 }
 .rate{
   display: flex;
