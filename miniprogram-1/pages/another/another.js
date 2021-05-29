@@ -23,7 +23,9 @@ Page({
       { name: '二维码', icon: 'qrcode' },
     ],
     login: "退出登录",
-    email: ""
+    email: "",
+    //其他用户的星级评分
+    value:0
   },
   
   //分享
@@ -169,7 +171,12 @@ Page({
       this.setData({login: "退出登录"})
     }
   },
-
+  //评分
+  onChange(event) {
+    this.setData({
+      value: event.detail,
+    });
+  },
   onLoad(options) {
     console.log(options);
     this.setData({"id":options.data});

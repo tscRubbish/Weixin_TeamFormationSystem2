@@ -51,6 +51,18 @@
     <text>{{medal}}</text>
   </van-grid-item>
 </van-grid>
+<view class="rate">
+  <text class="title">为该用户评价吧</text>
+  <van-rate 
+  value="{{ value }}"
+  size="{{ 25 }}"
+  color="yellow"
+  void-color="#eee"
+  void-icon="star"
+  bind:change="onChange"
+/>
+<van-button  hairline icon="star-o" type="info" size="small" bindtap="" height="100%">提交评价</van-button>
+</view>
 <text>个人描述</text>
 <rich-text>
 {{words}}

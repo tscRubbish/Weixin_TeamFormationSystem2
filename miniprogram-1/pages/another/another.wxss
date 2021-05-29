@@ -12,3 +12,13 @@
 .id {
   margin: 20rpx;
 }
+.rate{
+  display: flex;
+  border: 5rpx solid #777777;
+  flex-direction: column;
+}
+.title {
+  font-size: 35rpx;
+  line-height: 80rpx;
+  color: #666;
+}

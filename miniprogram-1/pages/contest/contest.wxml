@@ -26,6 +26,6 @@
   <text class="infomation" user-select="true">{{contest.description}}</text>
 </view>
 <view class="buttonContainer">
-  <van-button plain hairline type="primary" bind:click="toUserList">开始组队</van-button>
+  <van-button  hairline icon="star-o" type="info" bind:click="toUserList" class="start">开始组队</van-button>
 </view>
 
