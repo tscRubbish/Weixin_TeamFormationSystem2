@@ -8,6 +8,7 @@ import com.example.weixin.data.UserMapper;
 import com.example.weixin.po.Contest;
 import com.example.weixin.po.Team;
 import com.example.weixin.po.User;
+import com.example.weixin.util.MD5Encryption;
 import com.example.weixin.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class TeamServiceImpl implements TeamService {
         if (team!=null) return ResponseVO.buildFailure("每种比赛一个人只能组一个队");
 
         team=new Team(teamForm);
+        team.setPassword(MD5Encryption.encrypt(team.getPassword()));
         teamMapper.createTeam(team);
         return ResponseVO.buildSuccess(new TeamVo(team,contestMapper,teamMapper,userMapper));
     }

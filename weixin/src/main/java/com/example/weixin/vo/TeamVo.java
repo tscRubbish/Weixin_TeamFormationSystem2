@@ -21,6 +21,7 @@ public class TeamVo {
     private Integer id;
     private String pic;
     private String name;
+    private String password;
     private String description;
     private UserVo captain;
     private ArrayList<UserVo> members;
@@ -35,11 +36,11 @@ public class TeamVo {
         id=team.getId();
         pic=team.getPic();
         name=team.getName();
+        password=team.getPassword();
         description=team.getDescription();
         captain=new UserVo(userMapper.getUserById(team.getCaptainId()));
         maxNum=team.getMaxNum();
         List<Integer> list=teamMapper.getMembers(team);
-        System.out.println(JSON.toJSON(list));
         if (list!=null){
             members=new ArrayList<UserVo>();
             for (int x:list){

@@ -64,7 +64,7 @@ public class TeamController {
 
     @ApiOperation("加入队伍")
     @PostMapping("/takepart")
-    public ResponseVO takepart(@RequestBody MemberVo memberVo, HttpServletRequest request){
+    public ResponseVO takepart(@RequestBody MemberVo memberVo,@RequestParam String password, HttpServletRequest request){
         UserVo userVo=memberVo.getUserVo();
         TeamVo teamVo=memberVo.getTeamVo();
         if (userVo==null) return ResponseVO.buildFailure("空用户加入队伍");
@@ -74,6 +74,7 @@ public class TeamController {
         if (userId==null&&userId==userVo.getId()){
             return ResponseVO.buildFailure("请先登录再尝试加入队伍");
         }
+        if (!password.equals(teamVo.getPassword())) return ResponseVO.buildFailure("密码错误");
         return teamService.takePart(userVo,teamVo);
     }
 
@@ -89,7 +90,7 @@ public class TeamController {
 
     @ApiOperation("解散队伍")
     @PostMapping("/delete")
-    public ResponseVO getTeamList(@RequestBody TeamVo teamVo,HttpServletRequest request){
+    public ResponseVO delete(@RequestBody TeamVo teamVo,HttpServletRequest request){
         if (teamVo==null) return ResponseVO.buildFailure("解散空队伍");
         String token = request.getHeader(JwtUtil.TOKEN_NAME);
         Integer userId = JwtUtil.verifyTokenAndGetUserId(token);

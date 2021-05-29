@@ -139,10 +139,7 @@ Page({
     }
   },
 
-  onShow() {
-    this.setData({
-      id: app.globalData.id
-    })
+  onShow(options) {
     if (this.data.id != 0) {
       wx.request({
         url: config.host + "/api/user/getInfo?id=" + this.data.id,
@@ -173,7 +170,8 @@ Page({
     }
   },
 
-  onLoad() {
-    
+  onLoad(options) {
+    console.log(options);
+    this.setData({"id":options.data});
   },
 })
