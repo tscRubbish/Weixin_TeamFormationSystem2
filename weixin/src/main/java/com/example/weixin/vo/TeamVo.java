@@ -32,7 +32,7 @@ public class TeamVo {
     public TeamVo(){
 
     }
-    public TeamVo(@NonNull  Team team,ContestMapper contestMapper,TeamMapper teamMapper,UserMapper userMapper){
+    public TeamVo(Team team,ContestMapper contestMapper,TeamMapper teamMapper,UserMapper userMapper){
         id=team.getId();
         pic=team.getPic();
         name=team.getName();
@@ -50,7 +50,7 @@ public class TeamVo {
         captainNotice=team.getCaptainNotice();
         contest=new ContestVo(contestMapper.getContestById(team.getContestId()),userMapper,contestMapper);
     }
-    public TeamVo(@NonNull TeamForm teamForm,UserMapper userMapper,ContestMapper contestMapper){
+    public TeamVo(TeamForm teamForm,UserMapper userMapper,ContestMapper contestMapper){
         name=teamForm.getName();
         captain=new UserVo(userMapper.getUserById(teamForm.getCaptainId()));
         contest=new ContestVo(contestMapper.getContestById(teamForm.getContestId()),userMapper,contestMapper);

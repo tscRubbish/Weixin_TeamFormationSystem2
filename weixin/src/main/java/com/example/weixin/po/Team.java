@@ -28,7 +28,7 @@ public class Team {
     public Team(){
 
     }
-    public Team(@NonNull TeamForm teamForm){
+    public Team(TeamForm teamForm){
         name=teamForm.getName();
         password=teamForm.getPassword();
         captainId=teamForm.getCaptainId();
@@ -36,7 +36,7 @@ public class Team {
         description=teamForm.getDescription();
         maxNum=teamForm.getMaxNum();
     }
-    public Team(@NonNull TeamVo teamVo){
+    public Team(TeamVo teamVo){
         id=teamVo.getId();
         pic=teamVo.getPic();
         name=teamVo.getName();
