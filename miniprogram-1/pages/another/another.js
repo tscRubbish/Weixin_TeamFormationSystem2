@@ -22,6 +22,7 @@ Page({
     focus: 0,
     focusType: "like-o",
     likesType: "good-job-o",
+    score: 0,
     scoreType: "medal-o",
     showShare: false,
     shareOptions: [
@@ -89,6 +90,37 @@ Page({
       })
       Toast.success("点赞已取消")
     }
+  },
+
+  //评价
+  onRateChange(e) {
+    this.setData({
+      score: e.detail
+    })
+  },
+
+  onRatePush() {
+    if(this.data.scoreType == "medal-o") {
+      wx.request({
+      url: config.host + "/api/user/updateScore?score=" + this.data.score,
+      method: "POST",
+      header: {
+        "nju-token": app.globalData.token,
+        "nju-long-token": app.globalData.longToken
+      },
+      data: this.data.userVo,
+      success: (res) => {
+        this.setData({
+          scoreType: "medal",
+          ["userVo.score"]: this.data.score
+        })
+        Toast.success("感谢您的评价")
+      }
+    }) 
+    }else {
+      Toast.fail("请勿重复评价")
+    }
+    
   },
 
   onShow() {
