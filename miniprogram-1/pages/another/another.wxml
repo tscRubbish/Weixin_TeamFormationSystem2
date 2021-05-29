@@ -23,7 +23,7 @@
 
 <van-toast id="van-toast" />
 
-<van-grid column-num="3" border="true">
+<van-grid column-num="3" square gutter="{{ 10 }}">
   <van-grid-item use-slot class="focus">
     <van-icon name="{{focusType}}" bindtap="onFocusChange" data-type="{{focusType}}" />
     <text>关注</text>
@@ -51,9 +51,9 @@
   color="yellow"
   void-color="#eee"
   void-icon="star"
-  bind:change="onChange"
+  bind:change="onRateChange"
 />
-<van-button  hairline icon="star-o" type="info" size="small" bindtap="" height="100%">提交评价</van-button>
+<van-button  hairline icon="star-o" type="info" size="small" bindtap="onRatePush" height="100%">提交评价</van-button>
 </view>
 
 <van-cell-group>
