@@ -16,35 +16,38 @@
 </div>
 
 <div class="name">
-  <view class="id"> ID：{{userVo.id}} </view>
-  <view class="id"> 用户名：{{userVo.username}} </view>
+  <view class="id"> <text class="first" decode="true">&nbsp;ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>  {{userVo.id}} </view>
+  <view class="id"> <text class="first" decode="true">用户名 &nbsp;</text> {{userVo.username}} </view>
 </div>
-
 
 <van-toast id="van-toast" />
 
-<van-grid column-num="2" border="{{ false }}">
-  <van-grid-item use-slot>
+<van-grid column-num="3" border="true">
+  <van-grid-item use-slot class="focus">
+    <van-icon name="{{focusType}}" />
+    <text>关注</text>
+    <text>{{focus}}</text>
+  </van-grid-item>
+  <van-grid-item use-slot class="likes">
     <van-icon name="{{likesType}}"/>
     <text>点赞</text>
     <text>{{userVo.likes}}</text>
   </van-grid-item>
-  <van-grid-item use-slot>
+  <van-grid-item use-slot class="score">
     <van-icon name="{{scoreType}}"/>
     <text>评价</text>
     <text>{{userVo.score}}</text>
   </van-grid-item>
-  
 </van-grid>
 
-<van-cell-group>
-  <van-cell title="编辑个人信息" is-link link-type="navigateTo"
+<van-cell-group class="settings">
+  <van-cell title="编辑个人信息" is-link link-type="navigateTo" class="set"
   url="../mine/mine-pages/changement/changement?id={{userVo.id}}" />
-  <van-cell title="设置" is-link link-type="navigateTo"
+  <van-cell title="设置" is-link link-type="navigateTo" class="set"
   url="../mine/mine-pages/setting/setting" />
-  <van-cell title="反馈与帮助" is-link link-type="navigateTo"
+  <van-cell title="反馈与帮助" is-link link-type="navigateTo" class="set"
   url="../mine/mine-pages/helping/helping" />
-  <van-cell title="分享给朋友" is-link bind:click="onShareOpen" />
+  <van-cell title="分享给朋友" is-link bind:click="onShareOpen" class="set" />
   <van-share-sheet
     show="{{ showShare }}"
     title="立即分享给好友"
@@ -52,5 +55,5 @@
     bind:select="onShareSelect"  
     bind:close="onShareClose"
   />  <!-- onShareSelect还需完善 -->
-  <van-button type="danger" round block="true" bind:click="exit">{{login}}</van-button>
+  <van-button type="{{loginType}}" round block="true" bind:click="exit" class="set">{{login}}</van-button>
 </van-cell-group>

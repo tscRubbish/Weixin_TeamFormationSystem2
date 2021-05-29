@@ -11,6 +11,10 @@
   left: -16rpx;
 }
 
+.tit{
+  font-weight: 700;
+}
+
 .welcome{
   position:relative;
   left: 50rpx;

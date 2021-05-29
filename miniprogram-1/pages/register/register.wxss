@@ -91,3 +91,7 @@
   color: #4399fc;
   margin-left: 10rpx;
 }
+
+.tit {
+  font-weight: 700;
+}

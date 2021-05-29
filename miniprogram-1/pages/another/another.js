@@ -19,6 +19,8 @@ Page({
       username: "未登录"
     },
     tabber: "mine",
+    focus: 0,
+    focusType: "like-o",
     likesType: "good-job-o",
     scoreType: "medal-o",
     showShare: false,
@@ -40,6 +42,24 @@ Page({
   onTabberChange(event) {
     this.setData({tabber: event.detail})
     wx.redirectTo({url: `/pages/${event.detail}/${event.detail}`})
+  },
+
+  //关注
+  onFocusChange(e) {
+    let type = e.currentTarget.dataset.type
+    if (type == "like-o") {
+          this.setData({
+            focusType: "like",
+            focus: this.data.focus + 1
+          })
+      Toast.success('已关注');
+    } else if (type == "like") {
+      this.setData({
+        focus: this.data.focus - 1,
+        focusType: "like-o"
+      })
+      Toast.success("关注已取消");
+    }
   },
 
    //点赞
@@ -70,8 +90,6 @@ Page({
       Toast.success("点赞已取消")
     }
   },
-
-  //评价
 
   onShow() {
     if (this.data.id != 0) {
