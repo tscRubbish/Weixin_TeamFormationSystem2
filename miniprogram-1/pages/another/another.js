@@ -8,12 +8,10 @@ Page({
     id: 0,
     name: "未登录",
     words: "这个人很懒哦，还没有填写介绍",
-    like: 0,
-    likeType: "like-o",
-    good: 0,
-    goodType: "good-job-o",
-    medal: 0,
-    medalType: 0,
+    likes: 0,
+    likesType: "good-job-o",
+    score: 0,
+    scoreType: "medal-o",
     showShare: false,
     shareOptions: [
       { name: '微信', icon: 'wechat', openType: 'share' },
@@ -38,10 +36,10 @@ Page({
     wx.redirectTo({url: `/pages/${event.detail}/${event.detail}`})
   },
 
-  //关注
-  onLikeChange(e) {
+  //点赞
+  onLikesChange(e) {
     let type = e.currentTarget.dataset.type
-    if (type == "like-o") {
+    if (type == "good-job-o") {
       wx.request({
         url: config.host + "/api/user/updateLikes",
         method: "POST",
@@ -53,10 +51,10 @@ Page({
           "description": this.data.words,
           "email": this.data.email,
           "id": this.data.id,
-          "likes": this.data.like,
+          "likes": this.data.likes,
           "password": "string",
           "pic": "string",
-          "score": this.data.good,
+          "score": this.data.score,
           "tags": [
             "string"
           ],
@@ -65,27 +63,27 @@ Page({
         },
         success: (res) => {
           this.setData({
-            like: this.data.like + 1,
-            likeType: "like"
+            likes: this.data.likes + 1,
+            likesType: "good-job"
           })
         }
       })
-      Toast.success('已关注');
-    } else if (type == "like") {
+      Toast.success('已点赞');
+    } else if (type == "good-job") {
       this.setData({
-        like: this.data.like - 1,
-        likeType: "like-o"
+        likes: this.data.likes - 1,
+        likesType: "good-job-o"
       })
-      Toast.success("关注已取消")
+      Toast.success("点赞已取消")
     }
   },
 
-  //点赞
-  onGoodChange(e) {
+  //评价
+  onScoreChange(e) {
     let type = e.currentTarget.dataset.type
-    if (type == "good-job-o") {
+    if (type == "medal-o") {
       wx.request({
-        url: config.host + "/api/user/updateScores?score=" + this.data.good,
+        url: config.host + "/api/user/updateScores?score=" + this.data.score,
         method: "POST",
         header: {
           "nju-token": app.globalData.token,
@@ -95,10 +93,10 @@ Page({
           "description": this.data.words,
           "email": this.data.email,
           "id": this.data.id,
-          "likes": this.data.like,
+          "likes": this.data.likes,
           "password": "string",
           "pic": "string",
-          "score": this.data.good,
+          "score": this.data.score,
           "tags": [
             "string"
           ],
@@ -107,18 +105,18 @@ Page({
         },
         success: (res) => {
           this.setData({
-            good: this.data.good + 1,
-            goodType: "good-job"
+            score: this.data.score + 1,
+            scoreType: "medal"
           })
         }
       })
-      Toast.success("已点赞")
-    } else if (type == "good-job") {
+      Toast.success("评价成功")
+    } else if (type == "medal") {
       this.setData({
-        good: this.data.good - 1,
-        goodType: "good-job-o"
+        score: this.data.score - 1,
+        scoreType: "medal-o"
       })
-      Toast.success("点赞已取消")
+      Toast.success("评价已取消")
     }
   },
 
@@ -131,7 +129,7 @@ Page({
         login: "点击登录",
         good: 0,
         words:"",
-        like: 0,
+        likes: 0,
         medal: 0
       })
     } else {
@@ -141,7 +139,7 @@ Page({
     }
   },
 
-  onShow(options) {
+  onShow() {
     if (this.data.id != 0) {
       wx.request({
         url: config.host + "/api/user/getInfo?id=" + this.data.id,
@@ -155,8 +153,8 @@ Page({
           this.setData({
             name: temp.username,
             email: temp.email,
-            like: temp.likes,
-            good: temp.score,
+            likes: temp.likes,
+            score: temp.score,
             words: temp.description
           });
         },

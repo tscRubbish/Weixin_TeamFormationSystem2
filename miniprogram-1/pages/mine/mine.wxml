@@ -20,36 +20,21 @@
   <view class="id"> 用户名：{{name}} </view>
 </div>
 
-<van-cell-group>
-  <van-field
-    value="{{words}}"
-    label="介绍"
-    readonly
-    input-align="right"
-    title-width="75rpx"
-    type="textarea"
-    autosize="true"
-  />
-</van-cell-group>
 
 <van-toast id="van-toast" />
 
-<van-grid column-num="3" border="{{ false }}">
+<van-grid column-num="2" border="{{ false }}">
   <van-grid-item use-slot>
-    <van-icon name="{{likeType}}" bindtap="onLikeChange" data-type="{{likeType}}" />
-    <text>关注</text>
-    <text>{{like}}</text>
-  </van-grid-item>
-  <van-grid-item use-slot>
-    <van-icon name="{{goodType}}" bindtap="onGoodChange" data-type="{{goodType}}" />
+    <van-icon name="{{likesType}}" bindtap="onLikesChange" data-type="{{likesType}}" />
     <text>点赞</text>
-    <text>{{good}}</text>
+    <text>{{likes}}</text>
   </van-grid-item>
   <van-grid-item use-slot>
-    <van-icon name="medal-o" />
+    <van-icon name="{{scoreType}}" bindtap="onScoreChange" data-type="{{scoreType}}" />
     <text>评价</text>
-    <text>{{medal}}</text>
+    <text>{{score}}</text>
   </van-grid-item>
+  
 </van-grid>
 
 <van-cell-group>
