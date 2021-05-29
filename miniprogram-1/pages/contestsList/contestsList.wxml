@@ -8,23 +8,26 @@
   show-action
   bind:change="handleInput"
 />
-<text class="title" >搜索范围包括比赛名、标签</text>
+<text class="title" >搜索范围包括用户名、标签和描述</text>
 <van-button round type="info" class="search" size="small" bindtap="search">搜索</van-button>
+<van-divider hairline borderColor="#1989fa"/>
 <van-cell-group  title="比赛栏目" class="result">
-  <view wx:if="{{hasResult==false}}">暂无搜索结果</view>
+  <view class="contestsList">
+  <view wx:if="{{hasResult==false}}" class="title">暂无搜索结果</view>
   <view wx:else>
     <!--<van-cell data-ifo = "{{item}}" wx:for="{{contestsList}}" wx:key = "id" title="{{item.name}}" value="{{item.sponsor.username}}"
     label="描述信息" border="{{ false }}" bindtap = "toContest"/>
   </view>
 </van-cell-group>-->
-  <l-list wx:for="{{contestList}}" title="{{item.name}}" data-item="{{item}}" wx:key="id" image="/static/images/箭头右.png" bindtap="toContest">
+  <l-list wx:for="{{contestList}}" title="{{item.name}}" data-item="{{item}}" wx:key="id" image="/static/images/箭头右.png" bindtap="toContest" margin="5rpx">
     </l-list>
   </view>
+</view>
 </van-cell-group>
 <view class="pageButton">
-      <van-button bindtap="prePage" size="small" color="#00BBFF">上一页</van-button>
-      <text>当前页:{{page}}</text>
-      <van-button bindtap="nextPage" size="small" color="#00BBFF">下一页</van-button>
+      <van-button bindtap="prePage" size="small" color="#00BBFF" class="button">上一页</van-button>
+      <text class="button">当前页:{{page}}</text>
+      <van-button bindtap="nextPage" size="small" color="#00BBFF" class="button">下一页</van-button>
 </view>
 </scroll-view>
 

@@ -11,7 +11,9 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
-    "l-list":"/miniprogram_npm/lin-ui/list/index"
+    "l-list":"/miniprogram_npm/lin-ui/list/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index"
   },
   "navigationBarTitleText": "比赛"
 }

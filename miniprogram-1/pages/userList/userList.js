@@ -44,8 +44,10 @@ Page({
     }
   },
   nextPage(event){ 
-     this.setData({page:this.data.page+1});
-     this.search(event);
+    if (this.data.hasResult){ 
+      this.setData({page:this.data.page+1});
+      this.search(event);
+      }
   },
   toUser(event){
     let user=event.currentTarget.dataset.item;

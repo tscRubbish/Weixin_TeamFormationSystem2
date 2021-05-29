@@ -10,16 +10,16 @@
 </van-checkbox-group>
 -->
 <van-divider hairline borderColor="#1989fa"/>
-<view class="result">
-  <view wx:if="{{hasResult==false}}">暂无搜索结果</view>
+<view class="usersList">
+  <view wx:if="{{hasResult==false}}" class="title">暂无搜索结果</view>
   <view wx:else>
     <l-list wx:for="{{userList}}" title="{{item.username}}" data-item="{{item}}" wx:key="id" image="/static/images/箭头右.png" bindtap="toUser">
       <view></view>  
     </l-list>
-  </view>
-  <view>
-      <van-button bindtap="prePage">上一页</van-button>
+</view>
+</view>
+<view class="pageButton">
+      <van-button bindtap="prePage" size="small" color="#00BBFF">上一页</van-button>
       <text>当前页:{{page}}</text>
-      <van-button bindtap="nextPage" wx:if="{{hasResult}}">下一页</van-button>
-    </view>
+      <van-button bindtap="nextPage" size="small" color="#00BBFF">下一页</van-button>
 </view>

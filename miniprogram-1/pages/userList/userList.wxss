@@ -18,3 +18,17 @@
   float:right;
   display:fixed;
 }
+.pageButton{
+  display: flex;
+  justify-content:space-between;
+}
+.usersList{
+  border: 5rpx solid #777777;
+  padding-top: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+l-list{
+  margin-top: 5rpx;
+  margin-bottom: 5rpx;
+}
