@@ -25,13 +25,13 @@ public class Contest {
     public Contest(){
 
     }
-    public Contest(@NonNull ContestForm contestForm){
+    public Contest(ContestForm contestForm){
         name=contestForm.getName();
         sponsorId=contestForm.getSponsor().getId();
         startTime=contestForm.getStartTime();
         endTime=contestForm.getEndTime();
     }
-    public Contest(@NonNull ContestVo contestVo){
+    public Contest(ContestVo contestVo){
         id=contestVo.getId();
         name=contestVo.getName();
         sponsorId=contestVo.getSponsor().getId();

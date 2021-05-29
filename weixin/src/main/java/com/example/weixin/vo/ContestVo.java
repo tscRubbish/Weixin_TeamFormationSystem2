@@ -32,13 +32,13 @@ public class ContestVo {
     public ContestVo(){
 
     }
-    public ContestVo(@NonNull ContestForm contestForm){
+    public ContestVo(ContestForm contestForm){
         name=contestForm.getName();
         sponsor=contestForm.getSponsor();
         startTime=contestForm.getStartTime();
         endTime=contestForm.getEndTime();
     }
-    public ContestVo(@NonNull Contest contest,UserMapper userMapper,ContestMapper contestMapper){
+    public ContestVo(Contest contest,UserMapper userMapper,ContestMapper contestMapper){
         id=contest.getId();
         name=contest.getName();
         sponsor=new UserVo(userMapper.getUserById(contest.getSponsorId()));

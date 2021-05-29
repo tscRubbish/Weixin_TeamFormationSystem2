@@ -26,7 +26,7 @@ public class User {
     public User(){
 
     }
-    public User(@NonNull UserVo userVo){
+    public User(UserVo userVo){
         id=userVo.getId();
         pic=userVo.getPic();
         likes=userVo.getLikes();
