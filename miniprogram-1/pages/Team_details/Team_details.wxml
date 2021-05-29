@@ -14,6 +14,6 @@
     <van-grid-item icon="friends-o" text="队伍成员" bind:click="click_member" data-memberName_array="{{memberName_array}}" data-memberID_array="{{memberID_array}}"/>
     <van-grid-item icon="more-o" text="队长公告" bind:click="click_notice" data-notice="{{notice}}"/>
     <van-grid-item icon="setting-o" text="修改信息" bind:click="changeTeamInfo"/>
-    <van-grid-item icon="cross" text="解除组队" />
+    <van-grid-item icon="cross" text="解散队伍" bind:click="dissolution"/>
 </van-grid>
 </view>

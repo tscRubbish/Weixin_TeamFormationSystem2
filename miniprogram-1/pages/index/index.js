@@ -24,11 +24,11 @@ Page({
   onLoad: async function (options) {
     let that=this
     request('/api/recommend/getRecommend',{},{},'GET',function (result) {
-      console.log(result.data.content);
+      //console.log(result.data.content);
       that.setData({bannerList:result.data.content});
     });
     request('/api/contest/getList',{"word":"","page": 1},{},'GET',function (result){
-      console.log(result.data);
+      //console.log(result.data);
       that.setData({contestList:result.data.content});
     });
   },

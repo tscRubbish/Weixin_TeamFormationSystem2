@@ -18,13 +18,9 @@
       />
     </view>
   </van-cell>
-  <van-cell title="选择比赛" value="{{choose_match}}" bind:click="showPopup" center>
+  <van-cell title="参加比赛" value="{{choose_match}}"  center>
   </van-cell>
-  <van-popup show="{{ show }}" bind:close="onClose" position="bottom" round="true">
-    <view slot="">
-      <van-picker columns="{{ matchs }}" bind:change="match_Change" /> 
-    </view>
-  </van-popup>
+
   <van-cell-group>
 
     <van-field
