@@ -1,6 +1,5 @@
 // index.js
-import request from '../../utils/request'
-
+import config from '../../config/config'
 
 // 获取应用实例
 const app = getApp()
@@ -9,9 +8,13 @@ Page({
   data: {
     userVo:{},
     teamVo:{},
+    memberVo:{
+      'teamVo':{},
+      'userVo':{},
+    },
     id: 2,
     choose_match:"点我选择",
-    choose_matchID:1,
+    choose_matchID:2,
     // TODO 这里需要获得可以选择的比赛以及其ID，先随便写一个替代用
     new_introduction:"",
     new_Tpassword:"",
@@ -51,6 +54,10 @@ Page({
           token:res0.data.content.njuToken,
           longToken:res0.data.content.njuLongToken,
         });
+        app.globalData.token = that.data.token;
+        app.globalData.longToken =that.data.longToken;
+        // console.log(that.data.token);
+        // console.log(that.data.longToken);
         // 注意：上面这个登录请求只是为了拿到token，而实际上token应该被保存在app.js里面，这里这样是为了进行测试，下面的两个require才是真实有效的
         
         wx.request({
@@ -60,7 +67,7 @@ Page({
             that.setData({
               userVo: res.data.content,
             });
-            // console.log(that.data.userVo);
+            console.log(that.data.userVo);
             wx.request({
               url: 'http://localhost:8081/api/team/getTeamList',
               method: 'POST',
@@ -85,7 +92,7 @@ Page({
 
                   for (var j = 0; j < memberList.length; j++){
                     memberIDList.push(memberList[j].id);
-                    memberNameList.push(memberList[j].name);
+                    memberNameList.push(memberList[j].username);
                   }
                   var temp = "match_array[" + i + "].memberIDList";
                   var temp2 = "match_array[" + i + "].memberNameList";
@@ -137,17 +144,68 @@ Page({
   },
   
   join_team(event){
-    // console.log(this.data.TID);
+    var that = this;
+    wx.request({
+      url: config.host + '/api/team/getInfo?id=' + that.data.join_TID,
+      method: 'GET',
+      success(res){
+        that.setData({
+          teamVo:res.data.content,
+        });
+        var temp = 'memberVo.teamVo';
+        var temp2 = 'memberVo.userVo';
+        var temp3 = 'memberVo.teamVo.password';
+        that.setData({
+          [temp]:that.data.teamVo,
+          [temp2]:that.data.userVo,
+          [temp3]:that.data.join_Tpassword,
+        })
+
+        console.log(that.data.memberVo);
+        wx.request({
+          url: config.host + '/api/team/takepart?password=' + that.data.join_Tpassword,
+          method:'POST',
+          data:that.data.memberVo,
+          header:{
+            "nju-token":that.data.token,
+            "nju-long-token":that.data.longToken,
+          },
+          success(res){
+            console.log(res);
+            wx.redirectTo({
+              url: '../index/index',
+            })
+          }
+        })
+      }
+
+    })
+
     
   },
 
   createTeam(){
     var that = this;
     wx.request({
-      url: 'http://localhost:8081/api/team/create?captaindId=' + that.data.id + '&contestId=' + that.data.choose_matchID + '&name=' + that.data.new_Tname + '&password=' + that.data.new_Tpassword,
+      url: 'http://localhost:8081/api/team/create',
       method: 'POST',
+      data:{
+        "captainId":that.data.id,
+        "contestId":that.data.choose_matchID,
+        "description":"",
+        "maxNum":that.data.new_MaxNum,
+        "name":that.data.new_Tname,
+        "password":that.data.new_Tpassword,
+      },
+      header:{
+        "nju-token":that.data.token,
+        "nju-long-token":that.data.longToken,
+      },
       success(res){
         console.log(res);
+        wx.navigateTo({
+          url: '../index/index',
+        })
       }
 
     })

@@ -1,4 +1,6 @@
 // pages/Team_details/Team_details.js
+import config from "../../config/config"
+const app = getApp();
 Page({
 
 
@@ -11,10 +13,14 @@ Page({
     notice:"",
     memberID_array:[],
     memberName_array:[],
+    teamVo:{},
+    token:"",
+    longToken:"",
   },
 
 
   onLoad(event) {
+    console.log(event);
     wx.setNavigationBarTitle({
       title: '队伍信息'
     });
@@ -26,9 +32,20 @@ Page({
       notice:event.notice,
       memberID_array:event.memberID_array,
       memberName_array:event.memberName_array,
+      token:app.globalData.token,
+      longToken:app.globalData.longToken
     });
-    // console.log(event.memberID_array.split(","));
-
+    var that = this;
+    wx.request({
+      url: config.host + '/api/team/getInfo?id=' + event.TID,
+      method: 'GET',
+      success(res){
+        //console.log(res);
+        that.setData({
+          teamVo:res.data.content,
+        })
+      }
+    })
   },
 
   click_notice(event){
@@ -42,19 +59,60 @@ Page({
   },
 
   click_member(event){
+    console.log(event);
+    var that = this;
     wx.showActionSheet({
       itemList: String(event.target.dataset.membername_array).split(","),
       success (res) {
-        //TODO
-        //这里应该根据队员的ID跳转到对应的队员信息页面上
+        console.log(res);
+        var userID = that.data.memberID_array[res.tapIndex];
+        console.log(userID);
+        wx.redirectTo({
+          url: '../another/another?data=' + userID,
+        })
       },
     
     })
   },
 
   changeTeamInfo(event){
-    wx.navigateTo({
-      url: '/pages/changeTeamInfo/changeTeamInfo',
+    wx.redirectTo({
+      url: '/pages/changeTeamInfo/changeTeamInfo?TID=' + this.data.TID,
+    })
+  },
+
+  dissolution(){
+
+    var that = this;
+    console.log(that.data.teamVo);
+    wx.showModal({
+      content:"确定要解散队伍吗",
+      confirmText:"确定",
+      cancelText:"取消",
+      success (res) {
+        if (res.confirm) {
+          console.log('用户点击确定');
+          wx.request({
+            url: config.host + '/api/team/delete',
+            method: 'POST',
+            data:that.data.teamVo,
+            header:{
+              "nju-token":that.data.token,
+              "nju-long-token":that.data.longToken,
+            },
+            success(res){
+              console.log(res);
+              wx.redirectTo({
+                url: '../index/index',
+              })
+            }
+
+          })
+
+        } else if (res.cancel) {
+          console.log('用户点击取消');
+        }
+      }
     })
   }
 
