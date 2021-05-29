@@ -60,8 +60,6 @@ public class TeamServiceImpl implements TeamService {
         Team team=new Team(teamVo);
         Team team_old=teamMapper.getTeamById(teamVo.getId());
         if (team_old==null) return ResponseVO.buildFailure("修改不存在信息");
-        if (!team_old.getName().equals(team.getName()))
-            return ResponseVO.buildFailure("非法更改队伍名");
         if (!team_old.getCaptainId().equals(team.getCaptainId()))
             return ResponseVO.buildFailure("非法更改队长");
         if (!team_old.getContestId().equals(team.getContestId()))

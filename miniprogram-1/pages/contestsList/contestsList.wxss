@@ -9,3 +9,12 @@
 .p{
   margin-bottom:100rpx
 }
+
+.pageButton{
+  display: flex;
+  justify-content:space-between;
+}
+
+.result{
+  height: 600rpx;
+}

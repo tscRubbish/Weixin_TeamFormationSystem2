@@ -42,8 +42,18 @@ Page({
     }
   },
   nextPage(event){ 
-     this.setData({page:this.data.page+1});
-     this.search(event);
+    if (this.data.hasResult){ 
+      this.setData({page:this.data.page+1});
+      this.search(event);
+      }
+  },
+  toContest(event){
+    console.log(event);
+    let contest=event.currentTarget.dataset.item;
+    if (contest.id==undefined) contest=event.currentTarget.dataset.item.contestVo;
+    wx.navigateTo({
+      url: '/pages/contest/contest?data='+JSON.stringify(contest.id),
+    })
   },
   /**
    * 生命周期函数--监听页面加载

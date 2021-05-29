@@ -8,7 +8,9 @@
   </swiper>
 </view>
 <view>
+  <van-cell title="比赛名" value="{{contest.name}}" user-select="true"/>
   <van-cell title="主办方" is-link value="{{contest.sponsor.username}}" url="/pages/index/index"/>
+  <van-cell title="开始时间"  value="{{contest.startTime}}"/>
 </view>
 <view class="header">
     <text class="title" >比赛标签</text>
@@ -21,7 +23,7 @@
 </view>
 <van-cell title="比赛信息" is-link bindtap="showInfomation"/>
 <view class="infoContainer" wx:if="{{infoActive}}">
-  <text class="infomation" >{{contest.description}}</text>
+  <text class="infomation" user-select="true">{{contest.description}}</text>
 </view>
 <view class="buttonContainer">
   <van-button plain hairline type="primary" bind:click="toUserList">开始组队</van-button>
