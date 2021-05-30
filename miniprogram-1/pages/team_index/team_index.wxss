@@ -13,7 +13,8 @@
   justify-content:space-between;
 }
 .usersList{
-  border: 5rpx solid #777777;
+  border-top: 5rpx solid #777777;
+  border-bottom: 5rpx solid #777777;
   padding-top: 5rpx;
   display: flex;
 }
