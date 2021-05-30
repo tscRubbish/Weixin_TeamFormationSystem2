@@ -35,3 +35,7 @@
 .id {
   margin: 20rpx;
 }
+
+.login{
+  text-align: center
+}
