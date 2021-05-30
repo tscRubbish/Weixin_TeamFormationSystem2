@@ -23,9 +23,9 @@
 </view>
 <van-cell title="比赛信息" is-link bindtap="showInfomation"/>
 <view class="infoContainer" wx:if="{{infoActive}}">
-  <text class="infomation" user-select="true">{{contest.description}}</text>
+  <view class="infomation" user-select="true" user-select="true"><text>{{contest.description}}</text></view>
 </view>
 <view class="buttonContainer">
-  <van-button  hairline icon="star-o" type="info" bind:click="toUserList" class="start">开始组队</van-button>
+  <van-button  hairline icon="star-o" type="info" bind:click="toTeamIndex" class="start">开始组队</van-button>
 </view>
 

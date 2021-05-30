@@ -7,6 +7,9 @@
   font-size: 35rpx;
   line-height: 80rpx;
   color: #666;
+  padding-left: 10rpx;
+  margin-left: 30rpx;
+  font-weight: 600;
 }
 .list{
   top:500rpx;

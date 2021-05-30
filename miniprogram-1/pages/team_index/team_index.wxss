@@ -1,0 +1,18 @@
+.title {
+  font-size: 35rpx;
+  line-height: 80rpx;
+  color: #666;
+}
+.search{
+  float:right;
+  display:fixed;
+}
+.pageButton{
+  display: flex;
+  justify-content:space-between;
+}
+.usersList{
+  border: 5rpx solid #777777;
+  padding-top: 5rpx;
+  display: flex;
+}

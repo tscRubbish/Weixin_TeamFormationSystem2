@@ -5,7 +5,6 @@
   id="keyword"
   value="{{ value }}"
   placeholder="请输入比赛"
-  show-action
   bind:change="handleInput"
 />
 <text class="title" >搜索范围包括用户名、标签和描述</text>

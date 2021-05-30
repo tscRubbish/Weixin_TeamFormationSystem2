@@ -15,6 +15,11 @@
     "van-stepper": "/miniprogram_npm/@vant/weapp/stepper/index",
     "van-picker": "/miniprogram_npm/@vant/weapp/picker/index",
     "van-popup": "/miniprogram_npm/@vant/weapp/popup/index",
-    "van-uploader": "/miniprogram_npm/@vant/weapp/uploader/index"
+    "van-uploader": "/miniprogram_npm/@vant/weapp/uploader/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+  "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+  "van-divider": "@vant/weapp/divider/index",
+  "l-list":"/miniprogram_npm/lin-ui/list/index"
   }
 }

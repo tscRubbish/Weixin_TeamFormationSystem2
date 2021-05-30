@@ -1,6 +1,6 @@
 // index.js
 import config from '../../config/config'
-
+import request from '../../utils/request'
 // 获取应用实例
 const app = getApp()
 
@@ -28,7 +28,12 @@ Page({
     join_Tpassword:"",
     match_array:[],
     token: "",
-    longToken: ""
+    longToken: "",
+    //搜寻队员界面数据
+    keyword:'',
+      page:1,
+      hasResult:false,
+      userList:[],
   },
   onTabberChange(event) {
     this.setData({tabber: event.detail})
@@ -116,7 +121,44 @@ Page({
 
 
   },
-
+  handleInput(event) {
+    console.log(event);
+    let type = event.currentTarget.id;
+    this.setData({
+      [type]: event.detail
+    })
+    console.log(this.data.keyword)
+  },
+  async search(event){
+    let that=this;
+      request('/api/user/search',{word:this.data.keyword,page:this.data.page},{},'GET',function(result){
+        console.log(result.data.content);
+        that.setData({userList:result.data.content});
+        if (that.data.userList==undefined|| that.data.userList.length==0) that.setData({hasResult:false});
+        else that.setData({hasResult:true});
+        console.log(that.data.userList);
+        console.log(that.data.hasResult);
+      });
+  },
+  prePage(event){
+    if (this.data.page>1) {
+      this.setData({page:this.data.page-1});
+      this.search(event);
+    }
+  },
+  nextPage(event){ 
+    if (this.data.hasResult){ 
+      this.setData({page:this.data.page+1});
+      this.search(event);
+      }
+  },
+  toUser(event){
+    let user=event.currentTarget.dataset.item;
+      if (user.id==undefined) user=event.currentTarget.dataset.item.contestVo;
+    wx.navigateTo({
+      url: '/pages/another/another?data='+JSON.stringify(user.id),
+    });
+  },
   onChange(event) {
     // event.detail 的值为当前选中项的索引
     this.setData({ active: event.detail });

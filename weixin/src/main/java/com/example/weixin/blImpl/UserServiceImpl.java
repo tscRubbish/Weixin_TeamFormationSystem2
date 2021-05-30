@@ -65,9 +65,9 @@ public class UserServiceImpl implements UserService {
     }
     public ResponseVO search(String word,int page){
         List<User> list=userMapper.getUserByWords(word);
-        if (list.size()<=(page-1)*20) return null;
+        if (list.size()<=(page-1)*7) return null;
         List<UserVo> anslist=new ArrayList<UserVo>();
-        for (int i=(page-1)*20;i<page*20;i++){
+        for (int i=(page-1)*7;i<page*7;i++){
             if (list.size()<=i) break;
             anslist.add(new UserVo(list.get(i)));
         }
