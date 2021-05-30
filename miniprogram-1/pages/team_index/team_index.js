@@ -47,7 +47,7 @@ Page({
     var that = this;
 
     wx.request({
-      url: 'http://localhost:8081/api/user/login',
+      url: config.host+'api/user/login',
       method: 'POST',
       data: {
         "username": 'Tsc',
@@ -66,7 +66,7 @@ Page({
         // 注意：上面这个登录请求只是为了拿到token，而实际上token应该被保存在app.js里面，这里这样是为了进行测试，下面的两个require才是真实有效的
         
         wx.request({
-          url: 'http://localhost:8081/api/user/getInfo?id=' + that.data.id,
+          url: config.host+'api/user/getInfo?id=' + that.data.id,
           method: 'GET',
           success(res){
             that.setData({
@@ -74,7 +74,7 @@ Page({
             });
             console.log(that.data.userVo);
             wx.request({
-              url: 'http://localhost:8081/api/team/getTeamList',
+              url: config.host+'api/team/getTeamList',
               method: 'POST',
               data:that.data.userVo,
               header:{
