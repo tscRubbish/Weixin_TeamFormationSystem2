@@ -37,7 +37,8 @@
 }
 
 .login{
-  text-align: center
+  text-align: center;
+  margin: 25rpx;
 }
 .back{
   position: absolute;
@@ -47,5 +48,9 @@
   /* opacity:0.2; */
 }
 .van-grid{
-  opacity: 0.7 !important ;
+  opacity: 0.6 !important ;
 }
+.van-cell{
+  opacity: 0.8 !important ;
+}
+

@@ -21,6 +21,12 @@
         {
           "name": "pages/userList/userList",
           "pathName": "pages/userList/userList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/another/another",
+          "pathName": "pages/another/another",
           "scene": null
         }
       ]
