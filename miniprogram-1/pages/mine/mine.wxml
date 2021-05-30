@@ -1,3 +1,4 @@
+<image src="../../static/images/bj_test4.jpg" class="back"></image>
 <van-tabbar active="{{ tabber }}" bind:change="onTabberChange">
   <van-tabbar-item name="index" icon="home-o">主页</van-tabbar-item>
   <van-tabbar-item name="contestsList" icon="search">比赛</van-tabbar-item>

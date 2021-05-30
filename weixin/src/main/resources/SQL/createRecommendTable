@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS `recommend`;
+CREATE TABLE `recommend` (
+            `contestId` int(11) NOT NULL,
+            `pic` varchar(255) DEFAULT ''
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert recommend VALUES ('1','https://nju-rg2-2021-stage1.oss-cn-beijing.aliyuncs.com/EL比赛海报.png');

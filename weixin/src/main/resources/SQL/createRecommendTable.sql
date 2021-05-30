@@ -1,5 +1,0 @@
-DROP TABLE IF EXISTS `Recommend`;
-CREATE TABLE `Recommend` (
-            `contestId` int(11) NOT NULL,
-            `pic` varchar(255) DEFAULT ''
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;

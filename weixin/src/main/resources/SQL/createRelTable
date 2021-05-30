@@ -1,22 +1,23 @@
-DROP TABLE IF EXISTS `Members`;
+DROP TABLE IF EXISTS `members`;
 
-CREATE TABLE `Members` (
+CREATE TABLE `members` (
                         `userId` int(11) NOT NULL,
                         `teamId` int(11) NOT NULL,
                         PRIMARY KEY (`userId`,`teamId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `ContestPics`;
+DROP TABLE IF EXISTS `contestPics`;
 
-CREATE TABLE `ContestPics` (
+CREATE TABLE `contestpics` (
                            `contestId` int(11) NOT NULL,
                            `pic` varchar(255) NOT NULL,
                            PRIMARY KEY (`contestId`,`pic`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+insert contestpics VALUES (1,'https://nju-rg2-2021-stage1.oss-cn-beijing.aliyuncs.com/EL比赛海报.png');
 
-Alter Table  `ContestPics`
+Alter Table  `contestpics`
 modify `pic` varchar(255) NOT NULL;
-Alter Table  `recommend`
+Alter Table `recommend`
     modify `pic` varchar(255) NOT NULL
 
 
