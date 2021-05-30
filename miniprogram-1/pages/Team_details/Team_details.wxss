@@ -36,3 +36,19 @@
 .body{
   margin-top: 30rpx;
 }
+
+view{
+  font-weight: 600;
+}
+
+.header{
+  height: 400rpx;
+  background-color: rgb(250,250,250);
+  position: relative;
+}
+
+.card{
+  position: absolute;
+  margin-top: 100rpx;
+}
+

@@ -16,6 +16,7 @@ Page({
     teamVo:{},
     token:"",
     longToken:"",
+    pic:"/static/images/cat.png"
   },
 
 

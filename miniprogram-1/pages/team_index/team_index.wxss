@@ -16,3 +16,7 @@
   padding-top: 5rpx;
   display: flex;
 }
+
+van-tabs {
+  font-weight: 600;
+}

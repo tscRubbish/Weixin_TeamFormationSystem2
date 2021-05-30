@@ -58,10 +58,13 @@
   </van-tab>
 
   <van-tab title="搜寻队员">
-    <van-search value="{{keyword}}" placeholder="请输入搜索关键词" id="keyword" bind:change="handleInput"
-      bindconfirm="search" />
-    <text class="title">搜索范围包括用户名、标签和描述</text>
-    <van-button round type="info" class="search" size="small" bindtap="search">搜索</van-button>
+    <van-search value="{{keyword}}" placeholder="请输入搜索关键词" id="keyword" bind:change="handleInput" bindconfirm="search" use-action-slot>
+      <view slot="action">
+        <van-button round type="info" class="search" size="small" bindtap="search">搜索</van-button>
+      </view>
+    </van-search>
+    <text class="title" >搜索范围包括用户名、标签和描述</text>
+
     <van-divider borderColor="#1989fa" />
     <view class="usersList">
       <scroll-view scroll-y="true">

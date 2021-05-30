@@ -1,13 +1,30 @@
-<view class="head">
+<!-- <view class="head">
   <view class="Timg">
-    <image src="{{Timg_path}}"></image>
+    <image src={{pic}}></image>
   </view>
   <view class="Tdetail">
     <view id="Tname">{{Tname}}</view>
     <view id="match_name">{{match_name}}</view>
     <view id="TID">TID: {{TID}}</view>
   </view>
+</view> -->
+<view class="header">
+  <view class="card">
+  <van-card
+  num=""
+  desc="参与比赛 {{match_name}}"
+  title="队伍名称  {{Tname}}"
+  thumb="{{ pic }}"
+  centered="true"
+>
+<view slot="price">
+  <text>ID   {{TID}}</text>
+  </view>
+</van-card>
 </view>
+</view>
+
+
 
 <view class="body">
   <van-grid column-num="2" square gutter="{{ 10 }}" clickable="true">
