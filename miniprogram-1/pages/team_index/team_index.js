@@ -48,6 +48,7 @@ Page({
 
     that.data.token = app.globalData.token ;
     that.data.longToken = app.globalData.longToken;
+    that.data.id = app.globalData.id;
     wx.request({
       url: config.host + '/api/user/getInfo?id=' + that.data.id,
       method: 'GET',

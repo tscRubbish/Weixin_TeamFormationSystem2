@@ -6,7 +6,6 @@
     "pages/contestsList/contestsList",
     "pages/contest/contest",
     "pages/userList/userList",
-    "pages/Competition_node/Competition_node",
     "pages/Team_details/Team_details",
     "pages/team_index/team_index",
     "pages/mine/mine",

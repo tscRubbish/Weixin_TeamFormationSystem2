@@ -12,7 +12,7 @@ Page({
       username:'',
       email:'',
       password:'',
-      userType:'',
+      userType:'Admin',
       show:'',
       message:''
   },
@@ -25,66 +25,86 @@ Page({
   },
 
   register() {
-    wx.request({
-      url: config.host + '/api/user/register',
-      method: "POST",
-      header: {
-        "nju-token": app.globalData.token,
-        "nju-long-token": app.globalData.longToken
-      },
-      data: {
-        "description": "",
-        "email": this.data.email,
-        "id": 0,
-        "likes": 0,
-        "password": this.data.password,
-        "pic": "string",
-        "score": 0,
-        "tags": [
-          "string"
-        ],
-        "userType": "Admin",
-        "username": this.data.username
-      },
-      success: (res) => {
-        if (res.data.message == "邮箱重复") {
-          Dialog.alert({title: '提示',
-            message: '邮箱重复'});
-        } else {
-          wx.request({
-            url: config.host + "/api/user/login",
-            method: "POST",
-            header: {
-              "nju-token": app.globalData.token,
-              "nju-long-token": app.globalData.longToken
-            },
-            data: {
-              "description": "",
-              "email": this.data.email,
-              "id": 0,
-              "likes": 0,
-              "password": this.data.password,
-              "pic": "string",
-              "score": 0,
-              "tags": [
-                "string"
-              ],
-              "userType": "Admin",
-              "username": this.data.username
-            },
-            success: (res) => {
-              app.globalData.id = res.data.content.userVo.id;
-              app.globalData.token = res.data.content.njuToken;
-              app.globalData.longToken = res.data.content.njuLongToken;
-               wx.navigateTo({
-                url: '../mine/mine',
-              })
-            }
-          })
-         
+    if (this.data.username == "") {
+      Dialog.alert({title: '提示',
+      message: '用户名为空'});
+    } else if (this.data.email == "") {
+      Dialog.alert({title: '提示',
+      message: '邮箱为空'});
+    } else if (this.data.password == "") {
+      Dialog.alert({title: '提示',
+      message: '密码为空'});
+    } else {
+        wx.request({
+        url: config.host + '/api/user/register',
+        method: "POST",
+        header: {
+          "nju-token": app.globalData.token,
+          "nju-long-token": app.globalData.longToken
+        },
+        data: {
+          "description": "",
+          "email": this.data.email,
+          "id": 0,
+          "likes": 0,
+          "password": this.data.password,
+          "pic": "string",
+          "score": 0,
+          "tags": [
+            "string"
+          ],
+          "userType": this.data.userType,
+          "username": this.data.username
+        },
+        success: (res) => {
+          console.log(res)
+          if (res.data.message == "邮箱重复") {
+            Dialog.alert({title: '提示',
+              message: '邮箱重复'});
+          } else if (res.data.message == "用户名重复") {
+            Dialog.alert({title: '提示',
+            message: '用户名重复'});
+          } else if (res.data.message == "注册失败") {
+            Dialog.alert({title: '提示',
+            message: '注册失败'});
+          }else {
+            wx.request({
+              url: config.host + "/api/user/login",
+              method: "POST",
+              header: {
+                "nju-token": app.globalData.token,
+                "nju-long-token": app.globalData.longToken
+              },
+              data: {
+                "description": "",
+                "email": this.data.email,
+                "id": 0,
+                "likes": 0,
+                "password": this.data.password,
+                "pic": "string",
+                "score": 0,
+                "tags": [
+                  "string"
+                ],
+                "userType": this.data.userType,
+                "username": this.data.username
+              },
+              success: (res) => {
+                console.log(res);
+                app.globalData.id = res.data.content.userVo.id;
+                app.globalData.token = res.data.content.njuToken;
+                app.globalData.longToken = res.data.content.njuLongToken;
+                wx.navigateTo({
+                  url: '../mine/mine',
+                })
+              }
+            })
+          
+          }
         }
-      }
-    })
+      })
+    }
+   
   },
 
   onClose(event){

@@ -16,7 +16,7 @@
   <van-cell title="开始时间"  value="{{contest.startTime}}"/>
 </view>
 <view class="header">
-    <text class="title" >比赛标签</text>
+    <view class="title" >比赛标签</view>
 </view>
 <view class="tags">
   <van-tag class="tag" type="primary" wx:for="{{contest.tags}}">{{item}}</van-tag>

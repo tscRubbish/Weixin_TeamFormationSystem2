@@ -1,12 +1,4 @@
-<van-nav-bar
-  title="编辑个人信息"
-  left-text="返回"
-  left-arrow
-  fixed="true"
-  bind:click-left="onClickLeft"
-  safe-area-inset-top="false"
-  placeholder="true"
-/>
+
 
 <van-cell-group>
   <van-cell title="头像" is-link bind:click="showImage" />
@@ -34,7 +26,7 @@
   />
 </van-cell-group>
 
-<van-button type="danger" round block="true" bind:click="save">保存</van-button>
+<van-button type="primary" round block="true" bind:click="save">保存</van-button>
 
 <van-popup show="{{ showImage }}" bind:close="onImageClose">
   <image src="https://img.yzcdn.cn/vant/cat.jpeg"/>

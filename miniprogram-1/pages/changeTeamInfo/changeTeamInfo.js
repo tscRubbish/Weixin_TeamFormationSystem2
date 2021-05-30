@@ -14,7 +14,8 @@ Page({
     Tpassword:"123321",
     teamVo:{},
     token:"",
-    longToken:""
+    longToken:"",
+    captainNotice:"",
   },
 
   onLoad(event) {
@@ -41,6 +42,7 @@ Page({
           pic:res.data.content.pic,
           Tintroduction:res.data.content.description,
           Tpassword:res.data.content.password,
+          captainNotice:res.data.content.captainNotice,
         });
       }
     });
@@ -53,13 +55,15 @@ Page({
     var tempNum = 'teamVo.maxNum';
     var tempPic = 'teamVo.pic';
     var tempIntrodction = 'teamVo.description';
-    var tempPassword = 'teamVo.password'
+    var tempPassword = 'teamVo.password';
+    var tempNotice = 'teamVo.captainNotice'
     that.setData({
       [tempName]:that.data.Tname,
       [tempNum]:that.data.MaxNum,
       [tempPic]:that.data.pic,
       [tempIntrodction]:that.data.Tintroduction,
-      [tempPassword]:that.data.Tpassword
+      [tempPassword]:that.data.Tpassword,
+      [tempNotice]:that.data.captainNotice
     })
     wx.request({
       url: config.host + '/api/team/changeInfo',

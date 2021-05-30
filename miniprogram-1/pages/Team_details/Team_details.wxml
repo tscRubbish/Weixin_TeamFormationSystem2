@@ -8,6 +8,7 @@
     <view id="TID">TID: {{TID}}</view>
   </view>
 </view> -->
+<image src="../../static/images/bj_test2.jpg" class="back"></image>
 <view class="header">
   <view class="card">
   <van-card

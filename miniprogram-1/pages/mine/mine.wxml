@@ -23,7 +23,7 @@
 
 <van-toast id="van-toast" />
 
-<van-grid column-num="3" square gutter="10" class="grid">
+<van-grid column-num="3" square gutter="20" >
   <van-grid-item use-slot class="focus">
     <van-icon name="{{focusType}}" />
     <text>关注</text>

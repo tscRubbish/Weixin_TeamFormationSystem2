@@ -137,7 +137,9 @@ Page({
           var temp = res.data.content;
           this.setData({
             userVo: temp,
-            
+          });
+          wx.setNavigationBarTitle({
+            title: that.data.userVo.username
           });
         },
         fail: (res) => {

@@ -34,18 +34,14 @@ Page({
   //评价
   onRateChange(e) {this.setData({rate: e.detail})},
 
-  //返回
-  onClickLeft() {
-    wx.navigateBack({
-      delta: 1,
-    })
-    wx.showToast({ title: '返回', icon: 'none' });
-  },
+  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title: '反馈与帮助'
+    });
   },
 })
