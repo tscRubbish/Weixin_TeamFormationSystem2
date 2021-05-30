@@ -40,7 +40,7 @@ Page({
           if (res.data.message == "邮箱或密码错误") {
 
             Dialog.alert({title: '提示',
-            message: '用户名或邮箱错误'});
+            message: '用户名或密码错误'});
             
           } else if (res.data.content.userVo.id != null) {
             app.globalData.id = res.data.content.userVo.id;
@@ -56,7 +56,16 @@ Page({
   },
 
   login(){ 
-    this.do();
+    if (this.data.username == "") {
+      Dialog.alert({title: '提示',
+            message: '用户名为空'});
+    } else if (this.data.password == "") {
+      Dialog.alert({title: '提示',
+      message: '密码为空'});
+    } else {
+      this.do();
+    }
+    
   },
 
   toRegister(event){
