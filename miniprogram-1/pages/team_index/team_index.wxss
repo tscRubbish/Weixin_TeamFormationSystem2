@@ -2,6 +2,7 @@
   font-size: 35rpx;
   line-height: 80rpx;
   color: #666;
+  text-align: center;
 }
 .search{
   float:right;
