@@ -46,81 +46,56 @@ Page({
 
     var that = this;
 
+    that.data.token = app.globalData.token ;
+    that.data.longToken = app.globalData.longToken;
     wx.request({
-      url: 'http://localhost:8081/api/user/login',
-      method: 'POST',
-      data: {
-        "username": 'Tsc',
-        "password": 'Tsc20010401',
-        "email":'2010075010@qq.com'
-      },
-      success(res0){
+      url: config.host + '/api/user/getInfo?id=' + that.data.id,
+      method: 'GET',
+      success(res){
         that.setData({
-          token:res0.data.content.njuToken,
-          longToken:res0.data.content.njuLongToken,
+          userVo: res.data.content,
         });
-        app.globalData.token = that.data.token;
-        app.globalData.longToken =that.data.longToken;
-        // console.log(that.data.token);
-        // console.log(that.data.longToken);
-        // 注意：上面这个登录请求只是为了拿到token，而实际上token应该被保存在app.js里面，这里这样是为了进行测试，下面的两个require才是真实有效的
-        
+        console.log(that.data.userVo);
         wx.request({
-          url: 'http://localhost:8081/api/user/getInfo?id=' + that.data.id,
-          method: 'GET',
-          success(res){
+          url: config.host + '/api/team/getTeamList',
+          method: 'POST',
+          data:that.data.userVo,
+          header:{
+            'nju-token':that.data.token,
+            'nju-long-token':that.data.longToken
+          },
+          success(res2){
+            console.log(res2);
             that.setData({
-              userVo: res.data.content,
+              match_array: res2.data.content,
             });
-            console.log(that.data.userVo);
-            wx.request({
-              url: 'http://localhost:8081/api/team/getTeamList',
-              method: 'POST',
-              data:that.data.userVo,
-              header:{
-                'nju-token':that.data.token,
-                'nju-long-token':that.data.longToken
-              },
-              success(res2){
-                console.log(res2);
-                that.setData({
-                  match_array: res2.data.content,
-                });
-                for (var i = 0; i < that.data.match_array.length; i++){
-                  var memberList = that.data.match_array[i].members;
-                  var memberIDList = new Array();
-                  var memberNameList = new Array();
-                  var Num_now = memberList.length + 1;
-
-                  memberIDList.push(that.data.match_array[i].captain.id);
-                  memberNameList.push(that.data.match_array[i].captain.username);
-
-                  for (var j = 0; j < memberList.length; j++){
-                    memberIDList.push(memberList[j].id);
-                    memberNameList.push(memberList[j].username);
-                  }
-                  var temp = "match_array[" + i + "].memberIDList";
-                  var temp2 = "match_array[" + i + "].memberNameList";
-                  var temp3 = "match_array[" + i + "].Num_now";
-                  that.setData({
-                    [temp]:memberIDList,
-                    [temp2]:memberNameList,
-                    [temp3]:Num_now,
-                  })
-                }
-                console.log(that.data.match_array);
+            for (var i = 0; i < that.data.match_array.length; i++){
+              var memberList = that.data.match_array[i].members;
+              var memberIDList = new Array();
+              var memberNameList = new Array();
+              var Num_now = memberList.length + 1;
+              memberIDList.push(that.data.match_array[i].captain.id);
+              memberNameList.push(that.data.match_array[i].captain.username);
+              for (var j = 0; j < memberList.length; j++){
+                memberIDList.push(memberList[j].id);
+                memberNameList.push(memberList[j].username);
               }
-            })
+              var temp = "match_array[" + i + "].memberIDList";
+              var temp2 = "match_array[" + i + "].memberNameList";
+              var temp3 = "match_array[" + i + "].Num_now";
+              that.setData({
+                [temp]:memberIDList,
+                [temp2]:memberNameList,
+                [temp3]:Num_now,
+              })
+            }
+            console.log(that.data.match_array);
           }
         })
-
       }
     })
-
-    
-
-
   },
+
   handleInput(event) {
     console.log(event);
     let type = event.currentTarget.id;
@@ -229,7 +204,7 @@ Page({
   createTeam(){
     var that = this;
     wx.request({
-      url: 'http://localhost:8081/api/team/create',
+      url: config.host + '/api/team/create',
       method: 'POST',
       data:{
         "captainId":that.data.id,
