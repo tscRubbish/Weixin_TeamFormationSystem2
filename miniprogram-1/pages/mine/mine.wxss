@@ -4,21 +4,21 @@
 }
 
 .settings{
-  font-weight: 600;
+  font-weight: 900;
 }
 
 .focus{
-  font-weight: 600;
+  font-weight: 900;
   color: red;
 }
 
 .likes{
-  font-weight: 600;
+  font-weight: 900;
   color: green;
 }
 
 .score{
-  font-weight: 600;
+  font-weight: 900;
   color: blue;
 }
 

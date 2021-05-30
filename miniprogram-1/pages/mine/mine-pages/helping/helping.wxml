@@ -1,12 +1,4 @@
-<van-nav-bar
-  title="反馈与帮助"
-  left-text="返回"
-  left-arrow
-  fixed="true"
-  bind:click-left="onClickLeft"
-  safe-area-inset-top="false"
-  placeholder="true"
-/>
+
 
 <van-toast id="van-toast" />
 
