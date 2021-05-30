@@ -1,4 +1,4 @@
-
+<image src="../../static/images/bj_test2.jpg" class="back"></image>
 <van-cell-group>
   <van-field
   model:value="{{ Tname }}"
@@ -28,6 +28,13 @@
   placeholder="请输入url"
   clearable
   label="队伍头像url"
+  input-align="right"
+  />
+  <van-field
+  model:value="{{ captainNotice }}"
+  placeholder=""
+  clearable
+  label="队长公告"
   input-align="right"
   />
   <van-field
