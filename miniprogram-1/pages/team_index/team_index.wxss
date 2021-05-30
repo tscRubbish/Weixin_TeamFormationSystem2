@@ -3,6 +3,7 @@
   line-height: 80rpx;
   color: rgb(151, 148, 148);
   margin-left:50rpx ;
+  /* text-align: center; */
 }
 .search{
   float:right;
