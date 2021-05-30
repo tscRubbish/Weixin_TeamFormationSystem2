@@ -19,7 +19,7 @@ insert into `User` VALUES (0,'',1,'Admin','123456','123',5,1,'Admin','',''),
                           (1,'',0,'nju_se','12345678','12345',4,1,'Manager','',''),
                           (2,'',0,'Tsc','Tsc20010401','2010075010@qq.com',0,0,'User','','');
 insert into `User` VALUES (4,'',0,'清华腾讯微信事业群','qwertyuiop','191923',0,0,'Manager','计算机 软件','');
-delete from User where id=4;
+
 DROP TABLE IF EXISTS `Team`;
 
 CREATE TABLE `Team` (

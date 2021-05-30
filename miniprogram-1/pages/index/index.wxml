@@ -18,7 +18,7 @@
     </view>
     <view class="contestsList">
       <l-list wx:for="{{contestList}}" title="{{item.name}}" data-item="{{item}}" image="/static/images/箭头右.png"
-        bindtap="toContest" class="text">
+        bindtap="toContest">
         <view slot="right-section" class="text">{{item.sponsor.username}}</view>
       </l-list>
     </view>
