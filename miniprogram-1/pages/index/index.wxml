@@ -1,6 +1,6 @@
 <!--pages/index/index.wxml-->
 <view>
-  <image class="back" src="../../static/images/背景2.jpg"></image>
+  <image class="back" src="../../static/images/bj_test1.jpg"></image>
   <view class="main">
     <view class="indexContainer">
       <!--轮播图区域-->
