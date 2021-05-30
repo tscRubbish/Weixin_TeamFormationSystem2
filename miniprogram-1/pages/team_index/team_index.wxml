@@ -63,7 +63,9 @@
         <van-button round type="info" class="search" size="small" bindtap="search">搜索</van-button>
       </view>
     </van-search>
-    <view class="title" >搜索范围包括用户名、标签和描述</view>
+    <view class="title">
+      搜索范围包括用户名、标签和描述
+    </view>
 
     <view class="usersList">
       <scroll-view scroll-y="true">
