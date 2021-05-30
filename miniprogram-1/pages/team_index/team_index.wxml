@@ -1,4 +1,6 @@
-<van-tabs active="{{ tab_active }}" bind:change="tab_onChange" swipeable>
+
+<image src="../../static/images/bj_test2.jpg" class="back"></image>
+<van-tabs active="{{ tab_active }}" bind:change="tab_onChange" swipeable class="va">
   <van-tab title="我的队伍">
     <van-cell-group>
       <van-cell wx:for="{{match_array}}" wx:key="id" title="{{item.name}}" value="{{item.Num_now}}/4" size="large"
