@@ -1,7 +1,8 @@
 .title {
-  font-size: 35rpx;
+  font-size: 30rpx;
   line-height: 80rpx;
-  color: #666;
+  color: rgb(151, 148, 148);
+  margin-left:50rpx ;
 }
 .search{
   float:right;
@@ -15,8 +16,11 @@
   border: 5rpx solid #777777;
   padding-top: 5rpx;
   display: flex;
+  border-left: none;
+  border-right: none;
 }
 
 van-tabs {
   font-weight: 600;
 }
+

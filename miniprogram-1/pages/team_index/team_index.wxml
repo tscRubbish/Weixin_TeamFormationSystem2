@@ -63,9 +63,10 @@
         <van-button round type="info" class="search" size="small" bindtap="search">搜索</van-button>
       </view>
     </van-search>
-    <text class="title" >搜索范围包括用户名、标签和描述</text>
+    <view class="title">
+      搜索范围包括用户名、标签和描述
+    </view>
 
-    <van-divider borderColor="#1989fa" />
     <view class="usersList">
       <scroll-view scroll-y="true">
         <view wx:if="{{hasResult==false}}" class="title">暂无搜索结果</view>
