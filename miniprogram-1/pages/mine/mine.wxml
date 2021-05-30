@@ -55,5 +55,9 @@
     bind:select="onShareSelect"  
     bind:close="onShareClose"
   />  <!-- onShareSelect还需完善 -->
-  <van-button type="{{loginType}}" round block="true" bind:click="exit" class="set">{{login}}</van-button>
+  <view class="login">
+  <van-button type="{{loginType}}" round bind:click="exit" >
+  <text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{login}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+</van-button>
+</view>
 </van-cell-group>

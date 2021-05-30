@@ -34,9 +34,6 @@ image{
 .back{
   position: absolute;
 }
-.main{
-  position: absolute;
-}
 .text{
   font-weight: 600;
   font-size: 30rpx;

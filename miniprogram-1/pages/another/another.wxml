@@ -5,6 +5,7 @@
   <van-tabbar-item name="mine" icon="setting-o">我的</van-tabbar-item>
 </van-tabbar>
 
+<div class="top">
 <div class="name">
   <van-image id="image"
     round
@@ -19,7 +20,7 @@
   <view class="id"> <text class="first" decode="true">&nbsp;ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>  {{userVo.id}} </view>
   <view class="id"> <text class="first" decode="true">用户名 &nbsp;</text> {{userVo.username}} </view>
 </div>
-
+</div>
 
 <van-toast id="van-toast" />
 
